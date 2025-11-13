@@ -31,15 +31,16 @@ async function main(): Promise<void> {
     });
     console.log();
 
-    // Step 2: Parse XML logs
-    console.log('Step 2: Parsing XML logs...\n');
+    // Step 2: Parse XML and CSV logs
+    console.log('Step 2: Parsing XML and CSV logs...\n');
 
-    // Define paths to the XML files
+    // Define paths to the log files
     const callLogsPath = path.join(__dirname, '../data/call logs.xml');
     const smsLogsPath = path.join(__dirname, '../data/SMS logs.xml');
+    const csvCallLogsPath = path.join(__dirname, '../data/Calllog-export.csv');
 
-    // Parse both log files
-    const result = await parseAllLogs(callLogsPath, smsLogsPath);
+    // Parse all log files (XML and CSV)
+    const result = await parseAllLogs(callLogsPath, smsLogsPath, csvCallLogsPath);
 
     // Display summary
     console.log('=== Parsing Summary ===');

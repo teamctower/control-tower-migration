@@ -70,6 +70,17 @@ export interface SMSLogsData {
   };
 }
 
+// CSV Call Log types
+export interface CSVCallLogRow {
+  Name: string;
+  Phone: string;
+  Date: string;
+  Type: string;
+  'Duration(HH:MM:SS)': string;
+  'Duration(secs)': string;
+  SIM: string;
+}
+
 // Normalized types for API
 export interface NormalizedCallLog {
   phoneNumber: string;
