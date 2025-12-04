@@ -60,6 +60,10 @@ API_DEVICE_ID=c661cc65-d00e-4c5b-900e-4652db603940
    npm run dev
    ```
 
+### Step 5: Restore env variable
+
+1. Change the environment variable in ECS: `ENABLE_SIGNATURE=true`
+
 ## Project Structure
 
 ```
