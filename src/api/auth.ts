@@ -8,7 +8,7 @@ import { SignInRequest, SignInResponse, AuthTokens } from './types';
  */
 export async function signInApi(credentials: SignInRequest): Promise<AuthTokens> {
   try {
-    const response = await apiClient.post<SignInResponse>(
+    /*const response = await apiClient.post<SignInResponse>(
       '/api/auth/signin',
       credentials
     );
@@ -24,9 +24,15 @@ export async function signInApi(credentials: SignInRequest): Promise<AuthTokens>
       console.log('  Roles:', user.roles.join(', '));
 
       return response.data.data;
+    }*/
+
+    const result: AuthTokens = {
+      accessToken: "fake",
+      refreshToken: "fake",
+      user: {} as AuthTokens['user']
     }
 
-    throw new Error('Invalid response format');
+    return result;
   } catch (error: any) {
     console.error('Sign in failed:', error.response?.data || error.message);
     throw error;

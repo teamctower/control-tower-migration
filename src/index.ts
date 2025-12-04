@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { parseAllLogs } from './parser';
-import { signInApi, uploadPhoneActivityOneByOne } from './api';
+import { uploadPhoneActivityOneByOne } from './api';
 import { mapLogsToPhoneActivities } from './mappers/phoneActivityMapper';
 
 // Load environment variables
@@ -12,24 +12,13 @@ async function main(): Promise<void> {
     console.log('=== Control Tower Migration ===\n');
 
     // Validate required environment variables
-    const username = process.env.API_USERNAME;
-    const password = process.env.API_PASSWORD;
     const deviceName = process.env.API_DEVICE_NAME;
 
-    if (!username || !password || !deviceName) {
+    if (!deviceName) {
       throw new Error(
         'Missing required environment variables. Please set API_USERNAME, API_PASSWORD, and API_DEVICE_NAME in .env file'
       );
     }
-
-    // Step 1: Sign in to the API
-    console.log('Step 1: Authenticating...\n');
-    await signInApi({
-      username,
-      password,
-      deviceName
-    });
-    console.log();
 
     // Step 2: Parse XML and CSV logs
     console.log('Step 2: Parsing XML and CSV logs...\n');
